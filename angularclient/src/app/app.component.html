@@ -6,17 +6,19 @@
           <h2 class = "card-title text-center text-white py-3">
             {{title}}
             <ul class="text-center list-inline py-3">
+              <router-outlet>
               <li class=""list-inline-item>
                 <a routerLink="/books" class="btn btn-info">List Books</a>
               </li>
               <li class="list-inline-item">
                 <a routerLink="/addBook" class="btn btn-info">Add Book</a>
               </li>
+              </router-outlet>
             </ul>
           </h2>
         </div>
       </div>
-      <!--<router-outlet>/</router-outlet>-->
+
     </div>
   </div>
 </div>
