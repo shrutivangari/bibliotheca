@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  title = 'app';
+  title: string;
+
+  constructor() {
+    this.title = "Bibliotheca!";
+  }
 }
