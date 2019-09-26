@@ -19,13 +19,28 @@ public class LibController {
         return "Test";
     }
 
-    @GetMapping("books")
+    @GetMapping("/books")
     public List<Book> getBooks() {
         return (List<Book>) libRepository.findAll();
     }
 
-    @PostMapping("books")
+    @GetMapping("/book")
+    public Book getBook(@RequestParam Long id) {
+        return (Book) libRepository.findById(id).orElseGet(Book::new);
+    }
+
+    @PostMapping("/book")
     void addBook(@RequestBody Book book) {
         libRepository.save(book);
+    }
+
+    @PutMapping("/book")
+    void updateBook(@RequestBody Book book) {
+        libRepository.save(book);
+    }
+
+    @DeleteMapping("/book")
+    void deleteBook(@RequestParam Long id) {
+        libRepository.deleteById(id);
     }
 }
