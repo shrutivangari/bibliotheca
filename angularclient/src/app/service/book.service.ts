@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Book} from "../model/book";
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Access-Control-Allow-Origin' : '*'
+  })
+};
 
 @Injectable()
 export class BookService {
@@ -13,11 +19,11 @@ export class BookService {
   }
 
   public findAll(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.booksUrl);
+    return this.http.get<Book[]>(this.booksUrl, httpOptions);
   }
 
   public save(book: Book) {
-    return this.http.post<Book>(this.booksUrl, book);
+    return this.http.post<Book>(this.booksUrl, book, httpOptions);
   }
 
 }
