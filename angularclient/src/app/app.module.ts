@@ -7,7 +7,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {BookService} from "./service/book.service";
-import { BookFormComponent } from './book-form/book-form.component';
+import {BookFormComponent} from "./book-form/book-form.component";
 
 @NgModule({
   declarations: [
