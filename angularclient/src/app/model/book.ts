@@ -1,7 +1,15 @@
 export class Book {
 
-  id: string;
-  bookName: string;
-  status: string;
-  genre: string;
+    id: number;
+    bookName: string;
+    status: string;
+    genre: string;
+
+  constructor(
+    id: number,
+    bookName: string,
+    status: string,
+    genre: string
+  ) { }
+
 }

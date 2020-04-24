@@ -21,6 +21,7 @@ public class LibController {
 
     @GetMapping("/books")
     public List<Book> getBooks() {
+        System.out.println("Get URL invoked");
         return (List<Book>) libRepository.findAll();
     }
 
@@ -30,17 +31,25 @@ public class LibController {
     }
 
     @PostMapping("/book")
-    void addBook(@RequestBody Book book) {
+    Book addBook(@RequestBody Book book) {
+        System.out.println("POST URL invoked");
         libRepository.save(book);
+        return book;
     }
 
     @PutMapping("/book")
-    void updateBook(@RequestBody Book book) {
+    Book updateBook(@RequestBody Book book) {
         libRepository.save(book);
+        return book;
     }
 
     @DeleteMapping("/book")
     void deleteBook(@RequestParam Long id) {
         libRepository.deleteById(id);
+    }
+
+    @GetMapping("/id")
+    long getId() {
+        return libRepository.count();
     }
 }

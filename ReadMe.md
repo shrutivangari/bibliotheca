@@ -9,14 +9,16 @@ A library of the collection of books at Kashru's place
     - [x] REST
 - [x] DB
     - [x] H2 (In memory DB)
-- [] Frontend:
+- [x] Frontend:
+    - [x] Nodejs (v12.0)
     - [x] AngularJS
-    - [] Bootstrap 4
-    - [] Typescript
+    - [x] Bootstrap 4
+    - [x] Typescript
 #TODO
 - [] External integrations
-    - [] Google Books API
-    - [] Goodreads API
+    - [] Google Books API OR
+    - [x] Goodreads API (https://www.goodreads.com/api)
+    Example: `https://www.goodreads.com/search/index.xml?key=gV98RSIy6o8SiVuT2218GA&q=HARRY%20POTTER`
 - [] Features
     - [] Add support for query by name and not just ID
     - [] (Nice to Have) POST/PUT should return a response
@@ -39,5 +41,9 @@ Navigate to http://localhost:8080/h2
 You will see a GUI with the h2 connection settings. Enter the password to login and interate with the embedded H2 database
 
 3. Run the frontend application (Angular Js)
+Cd into the angularclient folder
+Run `npm install`
+Run `npm audit fix` to fix vulnerabilities
+Run `ng serve`
 
-Navigate to 
+Navigate to http://localhost:4200
