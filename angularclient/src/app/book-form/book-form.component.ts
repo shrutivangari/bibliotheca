@@ -12,14 +12,14 @@ export class BookFormComponent implements OnInit {
 
   // book: Book;
 
-  constructor(private route:ActivatedRoute, 
-              private router: Router, 
+  constructor(private router: Router, 
               private bookService: BookService) {
   //  this.book = new Book();
   }
 
   onSubmit() {
     //this.bookService.save(this.book).subscribe(result => this.gotoBookList());
+    console.log("Inside submit");
   }
 
   gotoBookList() {
@@ -27,6 +27,14 @@ export class BookFormComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  createBook() {
+    let bookName = (<HTMLInputElement>document.getElementById('bookTitle')).value;
+    let bookSatus = (<HTMLInputElement>document.getElementById('bookStatus')).value;
+    let bookGenre = (<HTMLInputElement>document.getElementById('bookGenre')).value;
+    let newBook = new Book(0, bookName, bookSatus, bookGenre);
+    this.bookService.save(newBook).subscribe(result => console.log(result.id + " " +result.bookName +" " + result.genre + " " + result.status));
   }
 
   // addBookToDB(bookTitle, bookStatus, bookGenre) {
