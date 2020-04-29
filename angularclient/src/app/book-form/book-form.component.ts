@@ -11,6 +11,7 @@ import {BookService} from "../service/book.service";
 export class BookFormComponent implements OnInit {
 
   book: Book;
+  apiStatus : Boolean = false;
 
   constructor(private router: Router, 
               private bookService: BookService) {
@@ -18,23 +19,28 @@ export class BookFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.createBook();
   }
 
   gotoBookList() {
+    console.log("Inside gotobooklist");
     this.router.navigate(['/books']);
   }
 
   ngOnInit() {
   }
 
-  createBook() {
-    // let bookName = (<HTMLInputElement>document.getElementById('bookTitle')).value;
-    // let bookSatus = (<HTMLInputElement>document.getElementById('bookStatus')).value;
-    // let bookGenre = (<HTMLInputElement>document.getElementById('bookGenre')).value;
-    //let newBook = new Book(0, bookName, bookSatus, bookGenre);
-    
+  createBook() {    
     console.log("Creating a new book " +  this.book.bookName + " " + this.book.status + " " + this.book.genre);
-    this.bookService.save(this.book).subscribe(result => console.log(result.id + " " +result.bookName +" " + result.genre + " " + result.status));
+    this.bookService.save(this.book)
+                    .subscribe(
+                        result => {
+                          console.log(result.id + " " +result.bookName +" " + result.genre + " " + result.status),
+                          this.apiStatus = true,
+                          result => this.gotoBookList()
+                        },
+                        (err) => console.log(err)
+                      );
   }
 
 }

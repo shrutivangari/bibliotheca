@@ -10,6 +10,7 @@ import {BookService} from "./service/book.service";
 import {BookFormComponent} from "./book-form/book-form.component";
 import { AddBookComponent } from './add-book/add-book.component';
 import { SearchForBookComponent } from './search-for-book/search-for-book.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SearchForBookComponent } from './search-for-book/search-for-book.compon
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
