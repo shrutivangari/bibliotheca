@@ -13,10 +13,12 @@ const httpOptions = {
 export class BookService {
 
   private booksUrl: string;
+  private bookUrl : string;
   private goodReadsApi: string;
 
   constructor(private http: HttpClient) {
     this.booksUrl = 'http://localhost:8080/books';
+    this.bookUrl = 'http://localhost:8080/book';
     this.goodReadsApi = 'https://www.goodreads.com/search/index.xml?key=gV98RSIy6o8SiVuT2218GA';
   }
 
@@ -25,7 +27,8 @@ export class BookService {
   }
 
   public save(book: Book): Observable<Book> {
-    return this.http.post<Book>(this.booksUrl, book, httpOptions);
+    console.log(JSON.stringify(book));
+    return this.http.post<Book>(this.bookUrl, book, httpOptions);
   }
 
   public getId() : Observable<number> {

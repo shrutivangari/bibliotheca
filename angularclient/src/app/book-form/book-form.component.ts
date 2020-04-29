@@ -10,16 +10,14 @@ import {BookService} from "../service/book.service";
 })
 export class BookFormComponent implements OnInit {
 
-  // book: Book;
+  book: Book;
 
   constructor(private router: Router, 
               private bookService: BookService) {
-  //  this.book = new Book();
+                this.book = new Book();
   }
 
   onSubmit() {
-    //this.bookService.save(this.book).subscribe(result => this.gotoBookList());
-    console.log("Inside submit");
   }
 
   gotoBookList() {
@@ -30,17 +28,13 @@ export class BookFormComponent implements OnInit {
   }
 
   createBook() {
-    let bookName = (<HTMLInputElement>document.getElementById('bookTitle')).value;
-    let bookSatus = (<HTMLInputElement>document.getElementById('bookStatus')).value;
-    let bookGenre = (<HTMLInputElement>document.getElementById('bookGenre')).value;
-    let newBook = new Book(0, bookName, bookSatus, bookGenre);
-    this.bookService.save(newBook).subscribe(result => console.log(result.id + " " +result.bookName +" " + result.genre + " " + result.status));
+    // let bookName = (<HTMLInputElement>document.getElementById('bookTitle')).value;
+    // let bookSatus = (<HTMLInputElement>document.getElementById('bookStatus')).value;
+    // let bookGenre = (<HTMLInputElement>document.getElementById('bookGenre')).value;
+    //let newBook = new Book(0, bookName, bookSatus, bookGenre);
+    
+    console.log("Creating a new book " +  this.book.bookName + " " + this.book.status + " " + this.book.genre);
+    this.bookService.save(this.book).subscribe(result => console.log(result.id + " " +result.bookName +" " + result.genre + " " + result.status));
   }
-
-  // addBookToDB(bookTitle, bookStatus, bookGenre) {
-  //   console.log("Inside methods");
-  //   let newBook = new Book(100, bookTitle, bookStatus, bookGenre);
-  //   this.bookService.save(newBook).subscribe(result => this.gotoBookList);
-  // }
 
 }

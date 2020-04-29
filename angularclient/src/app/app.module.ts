@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
@@ -10,6 +10,7 @@ import {BookService} from "./service/book.service";
 import {BookFormComponent} from "./book-form/book-form.component";
 import { AddBookComponent } from './add-book/add-book.component';
 import { SearchForBookComponent } from './search-for-book/search-for-book.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchForBookComponent } from './search-for-book/search-for-book.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]

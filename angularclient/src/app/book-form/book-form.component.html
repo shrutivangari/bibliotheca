@@ -1,20 +1,35 @@
-<form class="text-center border border-light p-5">
+<form class="text-center border border-light p-5" #bookForm="ngForm">
   <div class="form-row mb-4">
       <div class="col">
           <p class="h4 mb-4">Create a new Book</p>
           <div class="form-row mb-4">
-              <input type="text" 
-                     id="bookTitle" 
+              <input [(ngModel)] = "book.bookName" 
+                     type="text" 
+                     id="bookName" 
                      class="form-control" 
                      placeholder="Title"
                      required
-                     name="bookTitle">
+                     #bookName="ngModel"
+                     name="bookName">
           </div>
+          <!-- <div [hidden]="!bookName.pristine" class="alert alert-danger">*</div> -->
           <div class="form-row mb-4">
-            <input type="text" id="bookStatus" class="form-control" placeholder="Status">
+            <input [(ngModel)]="book.status" 
+                   type="text" 
+                   id="bookStatus" 
+                   class="form-control" 
+                   placeholder="Status"
+                   #bookStatus="ngModel"
+                   name="bookStatu">
         </div>
         <div class="form-row mb-4">
-          <input type="text" id="bookGenre" class="form-control" placeholder="Genre">
+          <input [(ngModel)]="book.genre" 
+                type="text" 
+                id="bookGenre" 
+                class="form-control" 
+                placeholder="Genre"
+                #bookGenre="ngModel"
+                name="bookGenre">
         </div>
         <button class="btn btn-info" type="button" (click)="createBook()">Create Book</button>
         <!-- <button class="btn btn-info" (click)="addBookToDB(bookTitle, bookStatus, bookGenre)">Add Book</button> -->
