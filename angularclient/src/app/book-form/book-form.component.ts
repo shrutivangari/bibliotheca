@@ -37,9 +37,12 @@ export class BookFormComponent implements OnInit {
                         result => {
                           console.log(result.id + " " +result.bookName +" " + result.genre + " " + result.status),
                           this.apiStatus = true,
-                          result => this.gotoBookList()
+                          this.gotoBookList()
                         },
-                        (err) => console.log(err)
+                        (err) => {
+                          console.log(err)
+                          this.apiStatus = false;
+                        }
                       );
   }
 
