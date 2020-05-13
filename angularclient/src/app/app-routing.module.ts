@@ -2,7 +2,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {BookListComponent} from "./book-list/book-list.component";
 import {NgModule} from "@angular/core";
 import {BookFormComponent} from "./book-form/book-form.component";
-import { AddBookComponent } from "./add-book/add-book.component";
+import { SearchForBookComponent } from "./search-for-book/search-for-book.component";
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'book-form', component: BookFormComponent
   },
   {
-    path: 'add-book', component: AddBookComponent
+    path: 'search-for-book', component: SearchForBookComponent
   }
 ];
 

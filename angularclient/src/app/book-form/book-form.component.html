@@ -28,9 +28,14 @@
   <div class="col">
     <p class="h4 mb-4">Search for a book</p>
     <div class="md-form mb-4">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <input [(ngModel)]="searchQuery" class="form-control mr-sm-2" type="text" placeholder="Search" id="searchQuery" name="searchQuery">
     </div>
-    <a routerLink="/search-for-book" class="btn btn-info">Search</a>
+    <button class="btn btn-info" type="button" (click)="searchForBook()">Search GoodReads</button>
+    <div *ngIf="goodReadsStatus">
+      <label>Yes!</label>
+      {{goodReadsResult}}
+    </div>
+    <!-- <a routerLink="['/search-for-book',searchQuery]" class="btn btn-info">Search</a> -->
   </div>
 </div>
 

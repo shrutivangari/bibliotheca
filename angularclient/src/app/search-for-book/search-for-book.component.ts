@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from '../service/book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-for-book',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchForBookComponent implements OnInit {
 
-  constructor() { }
+  searchQuery: string;
+
+  constructor(private bookService: BookService,
+    private router: Router) {
+
+   }
 
   ngOnInit() {
+    this.router.navigate(['/search-for-book'], {
+      queryParams: {searchQuery: this.searchQuery}
+    })
+    this.bookService.searchForBook(this.searchQuery).subscribe(
+      result => console.log(result)
+    );
   }
 
 }

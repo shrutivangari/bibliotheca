@@ -8,7 +8,6 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {BookService} from "./service/book.service";
 import {BookFormComponent} from "./book-form/book-form.component";
-import { AddBookComponent } from './add-book/add-book.component';
 import { SearchForBookComponent } from './search-for-book/search-for-book.component';
 import { CommonModule } from '@angular/common';
 
@@ -18,7 +17,6 @@ import { CommonModule } from '@angular/common';
     AppComponent,
     BookListComponent,
     BookFormComponent,
-    AddBookComponent,
     SearchForBookComponent
   ],
   imports: [

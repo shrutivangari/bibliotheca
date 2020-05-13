@@ -12,6 +12,9 @@ export class BookFormComponent implements OnInit {
 
   book: Book;
   apiStatus : Boolean = false;
+  searchQuery: string;
+  goodReadsStatus: Boolean = false;
+  goodReadsResult: string;
 
   constructor(private router: Router, 
               private bookService: BookService) {
@@ -44,6 +47,21 @@ export class BookFormComponent implements OnInit {
                           this.apiStatus = false;
                         }
                       );
+  }
+
+  searchForBook() {
+    this.bookService.searchForBook(this.searchQuery)
+                    .subscribe(
+                      result => {
+                        alert("API works");
+                        this.goodReadsStatus = true;
+                        this.goodReadsResult = result;
+                      },
+                      err => {
+                        console.log("Could not search GoodReads", err);
+                        this.goodReadsStatus = false;
+                      }
+                    );
   }
 
 }

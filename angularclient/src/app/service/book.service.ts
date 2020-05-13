@@ -9,17 +9,28 @@ const httpOptions = {
   })
 };
 
+const goodReadsOptions = {
+  headers: new HttpHeaders(
+    {
+    'Access-Control-Request-Headers': 'accept, content-type',
+    'Access-Control-Request-Method': 'GET',
+    'Access-Control-Allow-Origin': 'https://www.goodreads.com/, http://localhost:4200'
+  })
+};
+
 @Injectable()
 export class BookService {
 
   private booksUrl: string;
   private bookUrl : string;
   private goodReadsApi: string;
+  private proxyGoodReads: string;
 
   constructor(private http: HttpClient) {
     this.booksUrl = 'http://localhost:8080/books';
     this.bookUrl = 'http://localhost:8080/book';
     this.goodReadsApi = 'https://www.goodreads.com/search/index.xml?key=gV98RSIy6o8SiVuT2218GA';
+    this.proxyGoodReads = '/search/index.xml?key=gV98RSIy6o8SiVuT2218GA';
   }
 
   public findAll(): Observable<Book[]> {
@@ -36,8 +47,8 @@ export class BookService {
   }
 
   public searchForBook(searchQuery: string) {
-    let url = this.goodReadsApi + "&q=" + searchQuery;
-    return this.http.get<string>(url);
+    let url = this.proxyGoodReads + "&q=" + searchQuery;
+    return this.http.get<string>(url, httpOptions);
   }
 
 }
